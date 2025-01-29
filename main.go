@@ -24,7 +24,7 @@ type GPSData struct {
 func main() {
     gpsChannel := make(chan GPSData)
 
-    go readSerialPort("COM9", gpsChannel)
+    go readSerialPort("COM1", gpsChannel)
     //go readEthernet("localhost:12345", gpsChannel)
 
     a := app.New()
@@ -45,7 +45,7 @@ func main() {
 }
 
 func readSerialPort(portName string, gpsChannel chan GPSData) {
-    c := &serial.Config{Name: portName, Baud: 4800}
+    c := &serial.Config{Name: portName, Baud: 9600}
     s, err := serial.OpenPort(c)
     if err != nil {
         log.Fatal(err)
